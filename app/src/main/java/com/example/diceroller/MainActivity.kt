@@ -9,38 +9,47 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
 
     private fun startGame(boxArray: Array<Array<TextView>>, range: Int, givenNumbers: Int): MutableList<MutableList<Int>> {
+        //handles the initial starting, and eventual restarting of the game upon button press
         println("Game Started")
-
-        for(element in boxArray) {
-            for(box in element) {
+        //sets all of the text boxes to focusable (allows the user to click on them)
+        for (element in boxArray) {
+            for (box in element) {
                 box.isFocusable = true
             }
         }
-
+        //fills in the solution array with random based on the game's rules
         var solutionArray: MutableList<MutableList<Int>> = createSolution(boxArray, range)
 
         println(solutionArray)
 
+        //creates the array that the player will actual see, with '0' being placed in as the blank spot
         var playerArray = changeRandomToZero(solutionArray)
 
         println(playerArray)
 
+        //displays the player array to the player via boxArray
         updateTable(boxArray, playerArray)
 
+        //return the solution for comparison later
         return solutionArray
 
     }
 
     private fun checkSolution(solutionArray: MutableList<MutableList<Int>>, boxArray: Array<Array<TextView>>): Boolean {
         //checks to see if what the player entered in matches the solution code
+        //declares that the game is finished
         var gameFinish = true
+
+        //goes through the 2d array of each textbox, matches it with it's equivalent in the solution, and will only change the game finished boolean
+        //if one is false, otherwise assume true
         for ((column, element) in boxArray.withIndex()) {
             for ((row, box) in element.withIndex()) {
-                if(box.text.toString() != solutionArray[column][row].toString()) {
+                if (box.text.toString() != solutionArray[column][row].toString()) {
                     gameFinish = false
                 }
             }
         }
+        //return the changed boolean dictating if the game has ended or not
         return gameFinish
     }
 
@@ -50,51 +59,51 @@ class MainActivity : AppCompatActivity() {
         var solutionList: MutableList<MutableList<Int>> = ArrayList()
         var numberList: MutableList<Int> = ArrayList()
 
-        for(number in (1..range)) {
+        for (number in (1..range)) {
             numberList.add(number)
         }
 
         var listOne: MutableList<Int> = ArrayList()
-        for(i in (1..3)) {
+        for (i in (1..3)) {
             listOne.add(0)
         }
         var listTwo: MutableList<Int> = ArrayList()
-        for(i in (1..3)) {
+        for (i in (1..3)) {
             listTwo.add(0)
         }
         var listThree: MutableList<Int> = ArrayList()
-        for(i in (1..3)) {
+        for (i in (1..3)) {
             listThree.add(0)
         }
 
         var randomColumn = (0..2).random()
         var randomRow = (0..2).random()
 
-        for(element in numberList) {
+        for (element in numberList) {
 
             var elementChange = false
-            while(!elementChange) {
+            while (!elementChange) {
 
                 randomColumn = (0..2).random()
                 randomRow = (0..2).random()
 
-                when(randomColumn) {
+                when (randomColumn) {
                     0 -> {
-                        if(listOne[randomRow] == 0) {
+                        if (listOne[randomRow] == 0) {
                             listOne[randomRow] = element
                             elementChange = true
                         }
                     }
                     1 -> {
-                        if(listTwo[randomRow] == 0) {
+                        if (listTwo[randomRow] == 0) {
                             listTwo[randomRow] = element
                             elementChange = true
                         }
                     }
                     2 -> {
-                    if(listThree[randomRow] == 0) {
-                        listThree[randomRow] = element
-                        elementChange = true
+                        if (listThree[randomRow] == 0) {
+                            listThree[randomRow] = element
+                            elementChange = true
                         }
                     }
                 }
@@ -123,7 +132,7 @@ class MainActivity : AppCompatActivity() {
         var randomColumn = (0..2).random()
         var randomRow = (0..2).random()
 
-        when(randomColumn) {
+        when (randomColumn) {
             0 -> {
                 listOne.set(randomRow, 0)
             }
@@ -147,9 +156,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateTable(boxArray: Array<Array<TextView>>, playerArray: MutableList<MutableList<Int>>) {
         //updates the Ui that the user sees with the new table
-        for((column, element) in boxArray.withIndex()) {
-            for((row, box) in element.withIndex()) {
-                if(playerArray[column][row] > 0) {
+        for ((column, element) in boxArray.withIndex()) {
+            for ((row, box) in element.withIndex()) {
+                if (playerArray[column][row] > 0) {
                     box.text = playerArray[column][row].toString()
                     box.isFocusable = false
                 } else {
@@ -161,9 +170,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //runs as soon as the program is created
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //Asign all the textboxes
         val restartButton: Button = findViewById(R.id.button)
         val boxOne: TextView = findViewById(R.id.textBox1)
         val boxTwo: TextView = findViewById(R.id.textBox2)
@@ -177,60 +188,51 @@ class MainActivity : AppCompatActivity() {
         var range = 9 //the end of the range which each box can max at
         var givenNumbers = 8 //The amount of numbers given to the user to help them solve the puzzle
 
+        //Puts all of the text boxes into a proper 2d array
+        var boxArray: Array<Array<TextView>> = arrayOf(
+            arrayOf(boxOne, boxTwo, boxThree),
+            arrayOf(boxFour, boxFive, boxSix),
+            arrayOf(boxSeven, boxEight, boxNine)
+        )
 
 
-        var boxArray : Array<Array<TextView>> = arrayOf(arrayOf(boxOne, boxTwo, boxThree), arrayOf(boxFour, boxFive, boxSix), arrayOf(boxSeven, boxEight, boxNine))
-
-
-
+        //creates the solution array to compare the user's answer to the real answer, and runs the start game function
         var solutionArray: MutableList<MutableList<Int>> = startGame(boxArray, range, givenNumbers)
 
+        //creates the boolean to check to see if the game is finished (Gameplay Loop?)
         var gameFinish: Boolean
 
+        //creates the reset button's effect, if pressed runs start game again
         val resetButton: Button = findViewById(R.id.button)
         resetButton.setOnClickListener {
             solutionArray = startGame(boxArray, range, givenNumbers)
         }
 
+        //creates the submit button's effect, which will check each text box to see if it matches the solution array via checkSolution
         val submitButton: Button = findViewById(R.id.button11)
         submitButton.setOnClickListener {
-        gameFinish = checkSolution(solutionArray, boxArray)
+            //we change the gameFinish boolean by checking if the player has all boxes filled in with the right number
+            gameFinish = checkSolution(solutionArray, boxArray)
+            //everything from this line down to the 'end test' are prints put in purely for testing purposes
             println(solutionArray)
             print("[")
-            for(element in boxArray) {
-                for(box in element) {
+            for (element in boxArray) {
+                for (box in element) {
                     print("${box.text}, ")
                 }
             }
             println("]")
-        if(gameFinish) {
-            val toast = Toast.makeText(applicationContext, "Congratulations!", Toast.LENGTH_LONG)
-            toast.show()
-        } else {
-            val toast = Toast.makeText(applicationContext, "Try Again...", Toast.LENGTH_SHORT)
-            toast.show()
+            //end test
+
+            //checks to see if the game has ended, if so displays the winning message, if not displays a losing message via Toast
+            if (gameFinish) {
+                val toast =
+                    Toast.makeText(applicationContext, "Congratulations!", Toast.LENGTH_LONG)
+                toast.show()
+            } else {
+                val toast = Toast.makeText(applicationContext, "Try Again...", Toast.LENGTH_SHORT)
+                toast.show()
+            }
         }
-        }
-
-
-
-/*val rollButton: Button = findViewById(R.id.button)
-rollButton.setOnClickListener {
-   rollDice()
-}*/
+    }
 }
-
-/*private fun rollDice() {
-val dice = Dice(6)
-val diceRoll = dice.roll()
-val resultTextView: TextView = findViewById(R.id.textView)
-resultTextView.text = diceRoll.toString()
-} */
-}
-
-/*class Dice(val numSides: Int) {
-
-fun roll(): Int {
-return (1..numSides).random()
-}
-} */
