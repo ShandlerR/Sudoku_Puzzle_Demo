@@ -5,8 +5,6 @@ not the user entered the last number in right or wrong. I created this project a
 be an introduction to Android studios and demonstrate a learning of the basics fundementals of the platform including using the activity_main
 program to build a user interface involving Views, and using kotlin to code the backend.
 
-{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the app running and a walkthrough of the code.}
-
 [Software Demo Video](https://youtu.be/MXE2FoQqXiw)
 
 # Development Environment
