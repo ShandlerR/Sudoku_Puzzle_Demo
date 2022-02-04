@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/textBox5"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@android:drawable/edit_text"
+        android:ems="10"
+        android:focusable="true"
+        android:inputType="number"
+        android:maxLength="1"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/textBox4"
+        app:layout_constraintTop_toBottomOf="@+id/textBox3"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/textBox4"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="96dp"
+        android:background="@android:drawable/edit_text"
+        android:ems="10"
+        android:focusable="true"
+        android:inputType="number"
+        android:maxLength="1"
+        android:text="5"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBox1"
+        tools:text="7" />
+
+    <EditText
+        android:id="@+id/textBox1"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="184dp"
+        android:background="@android:drawable/edit_text"
+        android:ems="10"
+        android:focusable="true"
+        android:inputType="number"
+        android:maxLength="1"
+        android:text="5"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="7" />
+
+    <EditText
+        android:id="@+id/textBox3"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="184dp"
+        android:background="@android:drawable/edit_text"
+        android:ems="10"
+        android:focusable="true"
+        android:inputType="number"
+        android:maxLength="1"
+        android:text="5"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/textBox2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="7" />
+
+    <EditText
+        android:id="@+id/textBox2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="184dp"
+        android:background="@android:drawable/edit_text"
+        android:ems="10"
+        android:focusable="true"
+        android:inputType="number"
+        android:maxLength="1"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/textBox1"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/textBox7"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="96dp"
+        android:background="@android:drawable/edit_text"
+        android:ems="10"
+        android:focusable="true"
+        android:inputType="number"
+        android:maxLength="1"
+        android:text="5"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBox4"
+        tools:text="7" />
+
+    <EditText
+        android:id="@+id/textBox9"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@android:drawable/edit_text"
+        android:ems="10"
+        android:focusable="true"
+        android:inputType="number"
+        android:maxLength="1"
+        android:text="5"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/textBox5"
+        app:layout_constraintTop_toBottomOf="@+id/textBox6"
+        tools:text="7" />
+
+    <EditText
+        android:id="@+id/textBox6"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@android:drawable/edit_text"
+        android:ems="10"
+        android:focusable="true"
+        android:inputType="number"
+        android:maxLength="1"
+        android:text="5"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/textBox5"
+        app:layout_constraintTop_toBottomOf="@+id/textBox3"
+        tools:text="7" />
+
+    <EditText
+        android:id="@+id/textBox8"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@android:drawable/edit_text"
+        android:ems="10"
+        android:focusable="true"
+        android:inputType="number"
+        android:maxLength="1"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/textBox4"
+        app:layout_constraintTop_toBottomOf="@+id/textBox5"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="76dp"
+        android:text="RESTART"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button11" />
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginBottom="76dp"
+        android:text="SUBMIT"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
